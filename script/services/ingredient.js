@@ -1,4 +1,4 @@
-app.service('ingredientService', ['$http', '$log', '$q', function($http, $log, $q) {
+app.service('ingredientService', ['$http', function($http) {
     function parseToObject(data) {
         var lines = data.split("\n");
         var ingredients = {};
@@ -14,7 +14,6 @@ app.service('ingredientService', ['$http', '$log', '$q', function($http, $log, $
                 }
             }
         }
-        $log.debug(ingredients);
         return ingredients;
     }
 
