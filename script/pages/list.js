@@ -1,2 +1,7 @@
-app.controller('listController', ['$scope', function($scope) {
-}]);
+app.controller('listController', ['$scope', '$log', 'ingredientService', 
+    function($scope, $log, ingredientService) {
+        ingredientService.getData(function(data) {
+            $scope.data = data;
+        });
+    }
+]);
