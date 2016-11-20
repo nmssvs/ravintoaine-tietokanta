@@ -1,6 +1,23 @@
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
     <h1>Lista tuotteista ja raaka-aineista</h1>
-    <p>{{ data }}</p>
+    <table class="table">
+      <tr>
+        <th>Tuotenimi</th>
+        <th>Mittayksikkö</th>
+        <th>Kilokalorit</th>
+        <th>Hiilihydraatit</th>
+        <th>Rasva</th>
+        <th>Proteiini</th>
+      </tr>
+      <tr ng-repeat="ingredient in data">
+        <td>{{ ingredient.name }}</td>
+        <td>{{ ingredient.measure }}</td>
+        <td>{{ ingredient.calories }}</td>
+        <td>{{ ingredient.carbs }}</td>
+        <td>{{ ingredient.fat }}</td>
+        <td>{{ ingredient.proteins }}</td>
+      </tr>
+    </table>
   </div>
 </div>
