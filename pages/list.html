@@ -10,7 +10,7 @@
         <th>Rasva</th>
         <th>Proteiini</th>
       </tr>
-      <tr ng-repeat="ingredient in data">
+      <tr ng-repeat="ingredient in data | orderBy:'name'">
         <td>{{ ingredient.name }}</td>
         <td>{{ ingredient.measure }}</td>
         <td>{{ ingredient.calories }}</td>
