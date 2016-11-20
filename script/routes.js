@@ -7,5 +7,9 @@ app.config(function($routeProvider) {
         .when('/list', {
             templateUrl: 'pages/list.html',
             controller: 'listController'
+        })
+        .when('/add', {
+            templateUrl: 'pages/add.html',
+            controller: 'addController'
         });
 });
