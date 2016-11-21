@@ -18,11 +18,10 @@ app.service('ingredientService', ['$http', function($http) {
         return ingredients;
     }
 
-    this.getData = function(callback) {
-        $http.get('/data/nutrients.csv')
-            .success(function(data) {
-                callback(parseToObject(data));
-            })
+    this.getData = function() {
+        return $http.get('/data/nutrients.csv').then(function(response) {
+            return parseToObject(response.data);
+        });
     }
 
     this.addIngredient = function(ingredient) {
