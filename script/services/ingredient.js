@@ -24,4 +24,7 @@ app.service('ingredientService', ['$http', function($http) {
                 callback(parseToObject(data));
             })
     }
+
+    this.addIngredient = function(ingredient) {
+    }
 }]);
