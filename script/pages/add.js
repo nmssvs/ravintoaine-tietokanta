@@ -8,7 +8,7 @@ app.controller('addController', ['$scope', '$log', 'ingredientService',
         }
 
         $scope.add = function() {
-            $log.debug("Sent");
+            ingredientService.addIngredient($scope.ingredient);
         }
     }
 ]);

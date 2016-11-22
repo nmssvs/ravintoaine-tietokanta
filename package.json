@@ -2,6 +2,7 @@
   "name"         : "nutrient-database",
   "main"         : "server.js",
   "dependencies" : {
+    "body-parser"    : "^1.4.3",
     "express"        : "^4.13.4"
   }
 }

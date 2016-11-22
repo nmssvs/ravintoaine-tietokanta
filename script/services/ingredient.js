@@ -1,4 +1,4 @@
-app.service('ingredientService', ['$http', function($http) {
+app.service('ingredientService', ['$http', '$log', function($http, $log) {
     function parseToObject(data) {
         var lines = data.split("\n");
         var ingredients = [];
@@ -19,11 +19,18 @@ app.service('ingredientService', ['$http', function($http) {
     }
 
     this.getData = function() {
-        return $http.get('/data/nutrients.csv').then(function(response) {
-            return parseToObject(response.data);
+        return $http.get('/api/foods').then(function(response) {
+            return response.data;
         });
     }
 
     this.addIngredient = function(ingredient) {
+            $log.debug(JSON.stringify(ingredient));
+        $http({
+            url: '/api/foods', 
+            method: 'POST',
+            data: JSON.stringify(ingredient), 
+            headers: {'Content-Type': 'application/json'}
+        });
     }
 }]);
