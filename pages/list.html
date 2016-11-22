@@ -3,14 +3,38 @@
     <h1>Lista tuotteista ja raaka-aineista</h1>
     <table class="table">
       <tr>
-        <th>Tuotenimi</th>
-        <th>Mittayksikkö</th>
-        <th>Kilokalorit</th>
-        <th>Hiilihydraatit</th>
-        <th>Rasva</th>
-        <th>Proteiini</th>
+        <th ng-click="orderBy('name')">
+          Tuotenimi
+          <span ng-show="ordering == 'name'" class="glyphicon glyphicon-chevron-up"></span>
+          <span ng-show="ordering == '-name'" class="glyphicon glyphicon-chevron-down"></span>
+        </th>
+        <th ng-click="orderBy('measure')">
+          Mittayksikkö
+          <span ng-show="ordering == 'measure'" class="glyphicon glyphicon-chevron-up"></span>
+          <span ng-show="ordering == '-measure'" class="glyphicon glyphicon-chevron-down"></span>
+        </th>
+        <th ng-click="orderBy('calories')">
+          Kilokalorit
+          <span ng-show="ordering == 'calories'" class="glyphicon glyphicon-chevron-up"></span>
+          <span ng-show="ordering == '-calories'" class="glyphicon glyphicon-chevron-down"></span>
+        </th>
+        <th ng-click="orderBy('carbs')">
+          Hiilihydraatit
+          <span ng-show="ordering == 'carbs'" class="glyphicon glyphicon-chevron-up"></span>
+          <span ng-show="ordering == '-carbs'" class="glyphicon glyphicon-chevron-down"></span>
+        </th>
+        <th ng-click="orderBy('fat')">
+          Rasva
+          <span ng-show="ordering == 'fat'" class="glyphicon glyphicon-chevron-up"></span>
+          <span ng-show="ordering == '-fat'" class="glyphicon glyphicon-chevron-down"></span>
+        </th>
+        <th ng-click="orderBy('proteins')">
+          Proteiini
+          <span ng-show="ordering == 'proteins'" class="glyphicon glyphicon-chevron-up"></span>
+          <span ng-show="ordering == '-proteins'" class="glyphicon glyphicon-chevron-down"></span>
+        </th>
       </tr>
-      <tr ng-repeat="ingredient in data | orderBy:'name'">
+      <tr ng-repeat="ingredient in data | orderBy:ordering">
         <td>{{ ingredient.name }}</td>
         <td>{{ ingredient.measure }}</td>
         <td>{{ ingredient.calories }}</td>
