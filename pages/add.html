@@ -54,7 +54,7 @@
           <span ng-show="addIngredient.protein.$error.min" class="text-danger"> Arvon tulee olla positiivinen!</span>
         </div>
       </div>
-      <button type="submit" class="btn btn-default col-sm-offset-2" ng-disabled="addIngredient.$invalid" ng-click="add()">Lisää tuote</button>
+      <button type="submit" class="btn btn-default col-sm-offset-2 btn-info" ng-disabled="addIngredient.$invalid" ng-click="add()">Lisää tuote</button>
       <span ng-show="addIngredient.name.$invalid && addIngredient.measure.$valid" class="text-warning">Täytä tuotteen nimi!</span>
       <span ng-show="addIngredient.measure.$invalid && addIngredient.name.$valid" class="text-warning">Täytä tuotteen mittayksikkö!</span>
       <span ng-show="addIngredient.measure.$invalid && addIngredient.name.$invalid" class="text-warning">Täytä tuotteen nimi ja mittayksikkö!</span>
