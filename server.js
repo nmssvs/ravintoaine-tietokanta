@@ -82,6 +82,7 @@ app.delete('/api/foods/:foodId', function(req, res) {
     for(var i = 0; i < foodList.length; i++) {
         if (foodList[i].id == req.params.foodId) {
             foodList.splice(i, 1);
+            saveFoodListToFile();
             break;
         }
     }
