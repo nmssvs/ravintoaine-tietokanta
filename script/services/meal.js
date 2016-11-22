@@ -16,6 +16,15 @@ app.service('mealService', ['$http', '$log', 'ingredientService',
             });
         }
 
+        this.update = function(ingredient) {
+            $http({
+                url: '/api/meal/' + ingredient.id,
+                method: 'PUT',
+                data: JSON.stringify(ingredient),
+                headers: {'Content-Type': 'application/json'}
+            });
+        }
+
         this.remove = function(ingredient) {
             $http.delete('/api/meal/' + ingredient.id);
         }

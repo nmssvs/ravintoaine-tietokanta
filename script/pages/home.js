@@ -15,9 +15,20 @@ app.controller('homeController', ['$scope', 'ingredientService', 'mealService', 
             $scope.list = data;
         });
 
-        $scope.selectIngredient = function(ingredient) {
+        $scope.selectIngredient = function(data) {
+            var ingredient = data;
+            if (ingredient.measure == '100g') {
+                ingredient.amount = 100;
+            } else {
+                ingredient.amount = 1;
+            }
             mealService.add(ingredient);
             $scope.selectedIngredient = undefined;
+            updateMealList();
+        }
+
+        $scope.updateAmount = function(ingredient) {
+            mealService.update(ingredient);
             updateMealList();
         }
 

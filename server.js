@@ -69,6 +69,15 @@ app.put('/api/foods/:foodId', function(req, res) {
     }
 });
 
+app.put('/api/meal/:foodId', function(req, res) {
+    for (var food of mealList) {
+        if (food.id == req.body.id) {
+            food.amount = req.body.amount;
+            break;
+        }
+    }
+});
+
 app.delete('/api/foods/:foodId', function(req, res) {
     for(var i = 0; i < foodList.length; i++) {
         if (foodList[i].id == req.params.foodId) {
