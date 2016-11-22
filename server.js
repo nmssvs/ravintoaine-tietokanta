@@ -8,6 +8,7 @@ app.use('/', express.static(__dirname));
 app.listen(8080);
 
 var foodList = [];
+var mealList = [];
 var largestId = 0;
 
 function saveFoodListToFile() {
@@ -38,11 +39,19 @@ app.get('/api/foods/:foodId', function(req, res) {
     }
 });
 
+app.get('/api/meal', function(req, res) {
+    res.json(mealList);
+});
+
 app.post('/api/foods', function(req, res) {
     var food = req.body;
     food.id = ++largestId;
     foodList.push(food);
     saveFoodListToFile();
+});
+
+app.post('/api/meal', function(req, res) {
+    mealList.push(req.body);
 });
 
 app.put('/api/foods/:foodId', function(req, res) {
