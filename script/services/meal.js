@@ -7,13 +7,17 @@ app.service('mealService', ['$http', '$log', 'ingredientService',
             });
         }
 
-        this.addIngredient = function(ingredient) {
+        this.add = function(ingredient) {
             $http({
                 url: '/api/meal', 
                 method: 'POST',
                 data: JSON.stringify(ingredient), 
                 headers: {'Content-Type': 'application/json'}
             });
+        }
+
+        this.remove = function(ingredient) {
+            $http.delete('/api/meal/' + ingredient.id);
         }
     }
 ]);

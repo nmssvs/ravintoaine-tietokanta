@@ -33,11 +33,17 @@
             <span ng-show="ordering == 'name'" class="glyphicon glyphicon-chevron-up"></span>
             <span ng-show="ordering == '-name'" class="glyphicon glyphicon-chevron-down"></span>
           </th>
+          <th></th>
         </tr>
         <tr ng-repeat="ingredient in ingredients | orderBy:ordering">
           <td>määrä</td>
           <td>{{ ingredient.measure }}</td>
           <td>{{ ingredient.name }}</td>
+          <td>
+            <a href="#/">
+              <i class="glyphicon glyphicon-remove" ng-click="remove(ingredient)"></i>
+            </a>
+          </td>
         </tr>
       </table>
 

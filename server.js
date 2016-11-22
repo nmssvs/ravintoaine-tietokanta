@@ -78,4 +78,13 @@ app.delete('/api/foods/:foodId', function(req, res) {
     }
 });
 
+app.delete('/api/meal/:foodId', function(req, res) {
+    for(var i = 0; i < mealList.length; i++) {
+        if (mealList[i].id == req.params.foodId) {
+            mealList.splice(i, 1);
+            break;
+        }
+    }
+});
+
 console.log("starting server in 127.0.0.1:8080");

@@ -16,8 +16,13 @@ app.controller('homeController', ['$scope', 'ingredientService', 'mealService', 
         });
 
         $scope.selectIngredient = function(ingredient) {
-            mealService.addIngredient(ingredient);
+            mealService.add(ingredient);
             $scope.selectedIngredient = undefined;
+            updateMealList();
+        }
+
+        $scope.remove = function(ingredient) {
+            mealService.remove(ingredient);
             updateMealList();
         }
     }
