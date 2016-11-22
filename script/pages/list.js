@@ -2,9 +2,13 @@ app.controller('listController', ['$scope', '$log', 'ingredientService',
     function($scope, $log, ingredientService) {
         $scope.ordering = 'name';
 
-        ingredientService.getData().then(function(data) {
-            $scope.data = data;
-        });
+        function updateData() {
+            ingredientService.getData().then(function(data) {
+                $scope.data = data;
+            });
+        }
+
+        updateData();
 
         $scope.orderBy = function(order) {
             if ($scope.ordering == order) {
@@ -12,6 +16,11 @@ app.controller('listController', ['$scope', '$log', 'ingredientService',
             } else {
                 $scope.ordering = order;
             }
+        }
+
+        $scope.delete = function(id) {
+            ingredientService.delete(id);
+            updateData();
         }
     }
 ]);

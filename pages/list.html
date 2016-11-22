@@ -33,11 +33,7 @@
           <span ng-show="ordering == 'proteins'" class="glyphicon glyphicon-chevron-up"></span>
           <span ng-show="ordering == '-proteins'" class="glyphicon glyphicon-chevron-down"></span>
         </th>
-        <th ng-click="orderBy('id')">
-          ID
-          <span ng-show="ordering == 'id'" class="glyphicon glyphicon-chevron-up"></span>
-          <span ng-show="ordering == '-id'" class="glyphicon glyphicon-chevron-down"></span>
-        </th>
+        <th></th>
       </tr>
       <tr ng-repeat="ingredient in data | orderBy:ordering">
         <td>{{ ingredient.name }}</td>
@@ -46,7 +42,11 @@
         <td>{{ ingredient.carbs }}</td>
         <td>{{ ingredient.fat }}</td>
         <td>{{ ingredient.proteins }}</td>
-        <td>{{ ingredient.id }}</td>
+        <td>
+          <button type="button" class="btn btn-danger btn-sm" ng-click="delete(ingredient.id)">
+            Poista
+          </button>
+        </td>
       </tr>
     </table>
   </div>

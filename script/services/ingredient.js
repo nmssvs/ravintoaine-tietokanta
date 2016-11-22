@@ -25,7 +25,6 @@ app.service('ingredientService', ['$http', '$log', function($http, $log) {
     }
 
     this.addIngredient = function(ingredient) {
-            $log.debug(JSON.stringify(ingredient));
         $http({
             url: '/api/foods', 
             method: 'POST',
@@ -33,4 +32,9 @@ app.service('ingredientService', ['$http', '$log', function($http, $log) {
             headers: {'Content-Type': 'application/json'}
         });
     }
+
+    this.delete = function(id) {
+        $http.delete('/api/foods/' + id);
+    }
+
 }]);
