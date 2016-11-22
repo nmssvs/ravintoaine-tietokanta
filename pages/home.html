@@ -13,6 +13,24 @@
              class="form-control">
       <div ng-show="noResults">
         Lisää uusi tuote arvoilla:
+        <form class="form-inline" name="addIngredient">
+          <div class="form-group">
+              <input type="text" class="form-control" placeholder="measure" ng-model="newIngredient.measure" name="measure" required>
+          </div>
+          <div class="form-group">
+              <input type="number" class="form-control" placeholder="calories" ng-model="newIngredient.calories" min="0" step="0.1" name="calories" required>
+          </div>
+          <div class="form-group">
+              <input type="number" class="form-control" placeholder="carbs" ng-model="newIngredient.carbs" min="0" step="0.1" name="carbs" required>
+          </div>
+          <div class="form-group">
+              <input type="number" class="form-control" placeholder="fat" ng-model="newIngredient.fat" min="0" step="0.1" name="fat" required>
+          </div>
+          <div class="form-group">
+              <input type="number" class="form-control" placeholder="protein" ng-model="newIngredient.proteins" min="0" step="0.1" name="protein" required>
+          </div>
+          <button type="submit" class="btn btn-info" ng-disabled="addIngredient.$invalid" ng-click="addNewIngredient()">Lisää</button>
+        </form>
       </div>
     </div>
     <div class="col-md-6">

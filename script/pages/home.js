@@ -2,6 +2,7 @@ app.controller('homeController', ['$scope', 'ingredientService', 'mealService', 
     function($scope, ingredientService, mealService, $log) {
         $scope.selectedIngredient = undefined;
         $scope.ordering = undefined;
+        $scope.newIngredient = undefined;
 
         function updateMealList() {
             mealService.getData().then(function(data) {
@@ -35,6 +36,14 @@ app.controller('homeController', ['$scope', 'ingredientService', 'mealService', 
         $scope.remove = function(ingredient) {
             mealService.remove(ingredient);
             updateMealList();
+        }
+
+        $scope.addNewIngredient = function() {
+            $scope.newIngredient.name = $scope.selectedIngredient;
+            ingredientService.addIngredient($scope.newIngredient);
+            $scope.selectIngredient($scope.newIngredient);
+            $scope.newIngredient = undefined;
+            $scope.selectedIngredient = "";
         }
     }
 ]);
