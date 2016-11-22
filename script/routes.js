@@ -11,5 +11,9 @@ app.config(function($routeProvider) {
         .when('/add', {
             templateUrl: 'pages/add.html',
             controller: 'addController'
+        })
+        .when('/edit/:id', {
+            templateUrl: 'pages/edit.html',
+            controller: 'editController'
         });
 });

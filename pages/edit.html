@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <h1>{{ingredient.name}}</h1>
+    <form class="form-horizontal" name="editForm">
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="ingredientName">Tuotenimi</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" id="ingredientName" ng-model="ingredient.name" name="name" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="measure">Mittayksikkö</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" id="measure" ng-model="ingredient.measure" name="measure" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="calories">Kilokalorit</label>
+        <div class="col-sm-6">
+          <input type="number" class="form-control" id="calories" ng-model="ingredient.calories" min="0" step="0.1" name="calories" required>
+        </div>
+        <div class="col-sm-4">
+          <span ng-show="editForm.calories.$error.number" class="text-danger">Syötä arvo numerona!</span>
+          <span ng-show="editForm.calories.$error.min" class="text-danger"> Arvon tulee olla positiivinen!</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="carbs">Hiilihydraatit</label>
+        <div class="col-sm-6">
+          <input type="number" class="form-control" id="carbs" ng-model="ingredient.carbs" min="0" step="0.1" name="carbs" required>
+        </div>
+        <div class="col-sm-4">
+          <span ng-show="editForm.carbs.$error.number" class="text-danger">Syötä arvo numerona!</span>
+          <span ng-show="editForm.carbs.$error.min" class="text-danger"> Arvon tulee olla positiivinen!</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="fat">Rasva</label>
+        <div class="col-sm-6">
+          <input type="number" class="form-control" id="fat" ng-model="ingredient.fat" min="0" step="0.1" name="fat" required>
+        </div>
+        <div class="col-sm-4">
+          <span ng-show="editForm.fat.$error.number" class="text-danger">Syötä arvo numerona!</span>
+          <span ng-show="editForm.fat.$error.min" class="text-danger"> Arvon tulee olla positiivinen!</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="protein">Proteiini</label>
+        <div class="col-sm-6">
+          <input type="number" class="form-control" id="protein" ng-model="ingredient.proteins" min="0" step="0.1" name="protein" required>
+        </div>
+        <div class="col-sm-4">
+          <span ng-show="editForm.protein.$error.number" class="text-danger">Syötä arvo numerona!</span>
+          <span ng-show="editForm.protein.$error.min" class="text-danger"> Arvon tulee olla positiivinen!</span>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-default col-sm-offset-2 btn-info" ng-disabled="editForm.$invalid" ng-click="edit()">Muokkaus valmis</button>
+      <a href="#/list"><button class="btn btn-default">Takaisin</button></a>
+      <span ng-show="editForm.name.$invalid && editForm.measure.$valid" class="text-warning">Täytä tuotteen nimi!</span>
+      <span ng-show="editForm.measure.$invalid && editForm.name.$valid" class="text-warning">Täytä tuotteen mittayksikkö!</span>
+      <span ng-show="editForm.measure.$invalid && editForm.name.$invalid" class="text-warning">Täytä tuotteen nimi ja mittayksikkö!</span>
+    </form>
+  </div>
+</div>
