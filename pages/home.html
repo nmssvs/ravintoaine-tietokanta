@@ -5,10 +5,42 @@
     <div class="col-md-6">
       <input type="text"
              ng-model="selectedIngredient" 
-             uib-typeahead="(ingredient.name + ', ' + ingredient.measure) for ingredient in list | filter:$viewValue | limitTo:8"
+             uib-typeahead="(ingredient.name + ' (' + ingredient.measure + ')') for ingredient in list | filter:$viewValue | limitTo:8"
+             typeahead-on-select="selectIngredient($item)"
+             typeahead-show-hint="true"
+             typeahead-no-results="noResults"
+             placeholder="Lisää ateriaan ainesosa"
              class="form-control">
-      <pre>Selected: {{selectedIngredient}}</pre>
+      <div ng-show="noResults">
+        Lisää uusi tuote arvoilla:
+      </div>
     </div>
-    <div class="col-md-6"></div>
+    <div class="col-md-6">
+      <table class="table table-hover">
+        <tr>
+          <th ng-click="orderBy('amount')">
+            Määrä
+            <span ng-show="ordering == 'amount'" class="glyphicon glyphicon-chevron-up"></span>
+            <span ng-show="ordering == '-amount'" class="glyphicon glyphicon-chevron-down"></span>
+          </th>
+          <th ng-click="orderBy('measure')">
+            Mittayksikkö
+            <span ng-show="ordering == 'measure'" class="glyphicon glyphicon-chevron-up"></span>
+            <span ng-show="ordering == '-measure'" class="glyphicon glyphicon-chevron-down"></span>
+          </th>
+          <th ng-click="orderBy('name')">
+            Tuotenimi
+            <span ng-show="ordering == 'name'" class="glyphicon glyphicon-chevron-up"></span>
+            <span ng-show="ordering == '-name'" class="glyphicon glyphicon-chevron-down"></span>
+          </th>
+        </tr>
+        <tr ng-repeat="ingredient in ingredients | orderBy:ordering">
+          <td>määrä</td>
+          <td>{{ ingredient.measure }}</td>
+          <td>{{ ingredient.name }}</td>
+        </tr>
+      </table>
+
+    </div>
   </div>
 </div>
