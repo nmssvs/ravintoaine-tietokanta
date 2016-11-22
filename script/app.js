@@ -1,1 +1,1 @@
-var app = angular.module('nmssvs', ['ngRoute']);
+var app = angular.module('nmssvs', ['ui.bootstrap', 'ngRoute']);
