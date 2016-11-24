@@ -28,5 +28,9 @@ app.service('mealService', ['$http', '$log', 'ingredientService',
         this.remove = function(ingredient) {
             $http.delete('/api/meal/' + ingredient.id);
         }
+
+        this.resetMeal = function() {
+            $http.delete('/api/meal');
+        }
     }
 ]);

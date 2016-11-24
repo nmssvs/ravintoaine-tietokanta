@@ -47,6 +47,11 @@ app.controller('homeController', ['$scope', 'ingredientService', 'mealService', 
             updateNutrients();
         }
 
+        $scope.reset = function() {
+            mealService.resetMeal();
+            updateNutrients();
+        }
+
         $scope.selectIngredient = function(data) {
             var ingredient = data;
             if (ingredient.measure == '100g') {

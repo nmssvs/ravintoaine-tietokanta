@@ -97,4 +97,8 @@ app.delete('/api/meal/:foodId', function(req, res) {
     }
 });
 
+app.delete('/api/meal', function(req, res) {
+    mealList = [];
+});
+
 console.log("starting server in 127.0.0.1:8080");
