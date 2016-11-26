@@ -19,20 +19,26 @@ app.service('mealService', ['$http', '$log', 'ingredientService',
         }
 
         this.update = function(ingredient) {
-            $http({
+            return $http({
                 url: '/api/meal/' + ingredient.id,
                 method: 'PUT',
                 data: JSON.stringify(ingredient),
                 headers: {'Content-Type': 'application/json'}
+            }).then (function(response) {
+                return response.data;
             });
         }
 
         this.remove = function(ingredient) {
-            $http.delete('/api/meal/' + ingredient.id);
+            return $http.delete('/api/meal/' + ingredient.id).then(function(response) {
+                return response.data;
+            });
         }
 
         this.resetMeal = function() {
-            $http.delete('/api/meal');
+            $http.delete('/api/meal').then(function(response) {
+                return response.data;
+            });
         }
     }
 ]);

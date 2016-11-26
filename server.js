@@ -74,6 +74,7 @@ app.put('/api/meal/:foodId', function(req, res) {
     for (var food of mealList) {
         if (food.id == req.body.id) {
             food.amount = req.body.amount;
+            res.json(mealList);
             break;
         }
     }
@@ -93,6 +94,7 @@ app.delete('/api/meal/:foodId', function(req, res) {
     for(var i = 0; i < mealList.length; i++) {
         if (mealList[i].id == req.params.foodId) {
             mealList.splice(i, 1);
+            res.json(mealList);
             break;
         }
     }
@@ -100,6 +102,7 @@ app.delete('/api/meal/:foodId', function(req, res) {
 
 app.delete('/api/meal', function(req, res) {
     mealList = [];
+    res.json(mealList);
 });
 
 console.log("starting server in 127.0.0.1:8080");

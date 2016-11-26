@@ -16,7 +16,8 @@ app.controller('homeController', ['$scope', 'ingredientService', 'mealService', 
             });
         }
 
-        function updateNutrients() {
+        $scope.updateNutrients = function() {
+            $log.debug('updating nutrients');
             $scope.calories = 0;
             $scope.proteins = 0;
             $scope.carbs = 0;
@@ -48,8 +49,10 @@ app.controller('homeController', ['$scope', 'ingredientService', 'mealService', 
         }
 
         $scope.reset = function() {
-            mealService.resetMeal();
-            updateNutrients();
+            mealService.resetMeal().then(function(data) {
+                $scope.ingredients = data;
+                updateNutrients();
+            });
         }
 
         $scope.selectIngredient = function(data) {
@@ -66,16 +69,11 @@ app.controller('homeController', ['$scope', 'ingredientService', 'mealService', 
             $scope.selectedIngredient = undefined;
         }
 
-        $scope.updateAmount = function(ingredient) {
-            mealService.update(ingredient);
-            updateMealList();
-            updateNutrients();
-        }
-
         $scope.remove = function(ingredient) {
-            mealService.remove(ingredient);
-            updateMealList();
-            updateNutrients();
+            mealService.remove(ingredient).then(function(data) {
+                $scope.ingredients = data;
+                updateNutrients();
+            });
         }
 
         $scope.addNewIngredient = function() {
