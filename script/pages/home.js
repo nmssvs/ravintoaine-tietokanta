@@ -78,6 +78,8 @@ app.controller('homeController', ['$scope', 'ingredientService', 'mealService', 
         $scope.addNewIngredient = function() {
             $scope.newIngredient.name = $scope.selectedIngredient;
             ingredientService.addIngredient($scope.newIngredient).then(function(data) {
+                $scope.ingredients = data.mealList;
+                $scope.newIngredient.id = data.id;
                 $scope.selectIngredient($scope.newIngredient);
                 $scope.newIngredient = undefined;
                 $scope.selectedIngredient = "";
