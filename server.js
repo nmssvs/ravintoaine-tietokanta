@@ -52,6 +52,7 @@ app.post('/api/foods', function(req, res) {
 
 app.post('/api/meal', function(req, res) {
     mealList.push(req.body);
+    res.json(mealList);
 });
 
 app.put('/api/foods/:foodId', function(req, res) {

@@ -8,11 +8,13 @@ app.service('mealService', ['$http', '$log', 'ingredientService',
         }
 
         this.add = function(ingredient) {
-            $http({
+            return $http({
                 url: '/api/meal', 
                 method: 'POST',
                 data: JSON.stringify(ingredient), 
                 headers: {'Content-Type': 'application/json'}
+            }).then(function(response) {
+                return response.data;
             });
         }
 

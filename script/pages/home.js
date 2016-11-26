@@ -59,10 +59,11 @@ app.controller('homeController', ['$scope', 'ingredientService', 'mealService', 
             } else {
                 ingredient.amount = 1;
             }
-            mealService.add(ingredient);
+            mealService.add(ingredient).then(function(data){
+                $scope.ingredients = data;
+                updateNutrients();
+            });
             $scope.selectedIngredient = undefined;
-            updateMealList();
-            updateNutrients();
         }
 
         $scope.updateAmount = function(ingredient) {
