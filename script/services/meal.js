@@ -36,7 +36,7 @@ app.service('mealService', ['$http', '$log', 'ingredientService',
         }
 
         this.resetMeal = function() {
-            $http.delete('/api/meal').then(function(response) {
+            return $http.delete('/api/meal').then(function(response) {
                 return response.data;
             });
         }
