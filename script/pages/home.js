@@ -13,11 +13,11 @@ app.controller('homeController', ['$scope', 'ingredientService', 'mealService', 
         function updateMealList() {
             mealService.getData().then(function(data) {
                 $scope.ingredients = data;
+                $scope.updateNutrients();
             });
         }
 
         $scope.updateNutrients = function() {
-            $log.debug('updating nutrients');
             $scope.calories = 0;
             $scope.proteins = 0;
             $scope.carbs = 0;
@@ -45,13 +45,12 @@ app.controller('homeController', ['$scope', 'ingredientService', 'mealService', 
 
         $scope.update = function() {
             updateMealList();
-            updateNutrients();
         }
 
         $scope.reset = function() {
             mealService.resetMeal().then(function(data) {
                 $scope.ingredients = data;
-                updateNutrients();
+                $scope.updateNutrients();
             });
         }
 
@@ -64,7 +63,7 @@ app.controller('homeController', ['$scope', 'ingredientService', 'mealService', 
             }
             mealService.add(ingredient).then(function(data){
                 $scope.ingredients = data;
-                updateNutrients();
+                $scope.updateNutrients();
             });
             $scope.selectedIngredient = undefined;
         }
@@ -72,16 +71,17 @@ app.controller('homeController', ['$scope', 'ingredientService', 'mealService', 
         $scope.remove = function(ingredient) {
             mealService.remove(ingredient).then(function(data) {
                 $scope.ingredients = data;
-                updateNutrients();
+                $scope.updateNutrients();
             });
         }
 
         $scope.addNewIngredient = function() {
             $scope.newIngredient.name = $scope.selectedIngredient;
-            ingredientService.addIngredient($scope.newIngredient);
-            $scope.selectIngredient($scope.newIngredient);
-            $scope.newIngredient = undefined;
-            $scope.selectedIngredient = "";
+            ingredientService.addIngredient($scope.newIngredient).then(function(data) {
+                $scope.selectIngredient($scope.newIngredient);
+                $scope.newIngredient = undefined;
+                $scope.selectedIngredient = "";
+            });
         }
     }
 ]);

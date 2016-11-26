@@ -48,6 +48,7 @@ app.post('/api/foods', function(req, res) {
     food.id = ++largestId;
     foodList.push(food);
     saveFoodListToFile();
+    res.json(foodList);
 });
 
 app.post('/api/meal', function(req, res) {

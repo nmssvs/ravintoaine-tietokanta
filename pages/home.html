@@ -53,7 +53,7 @@
           </th>
           <th></th>
         </tr>
-        <tr ng-repeat="ingredient in ingredients | orderBy:ordering" ingredient="ingredient" update-nutrients="updateNutrients()"></tr>
+        <tr ng-repeat="ingredient in ingredients | orderBy:ordering" ingredient="ingredient" remove='remove(ingredient)' update-nutrients="updateNutrients()"></tr>
       </table>
 
       <form class="form-inline" name="servingsForm">

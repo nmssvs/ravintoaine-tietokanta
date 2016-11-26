@@ -13,11 +13,13 @@ app.service('ingredientService', ['$http', '$log', function($http, $log) {
     }
 
     this.addIngredient = function(ingredient) {
-        $http({
+        return $http({
             url: '/api/foods', 
             method: 'POST',
             data: JSON.stringify(ingredient), 
             headers: {'Content-Type': 'application/json'}
+        }).then(function(response) {
+            return response.data;
         });
     }
 
